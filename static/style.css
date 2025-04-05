@@ -105,3 +105,30 @@ section p {
     font-family: 'Lemon Milk', sans-serif;
     font-size: 45px; 
 }
+
+header.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0 60px;
+}
+
+header.nav-bar .link{
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    text-decoration: none;
+}
+
+header.nav-bar .link:hover {
+    color: #0077cc;
+}
+
+header.nav-bar .symbol {
+    width: 60px;
+    height: 60px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Yin_yang.svg/1024px-Yin_yang.svg.png') no-repeat center center;
+    background-size: contain;
+}
