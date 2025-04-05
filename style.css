@@ -77,3 +77,34 @@ body, input {
     color: #222;
     border-left: 4px solid #ddd;
   }
+
+  #bad-news-form {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+  }
+  
+  #bad-news-form textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #bad-news-form button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #bad-news-form button:hover {
+    background-color: #e03c3c;
+  }
+  
+  #userBadNewsThread .news-item {
+    border-left: 4px solid #ffcccc;
+  }
+  

@@ -21,58 +21,18 @@
 
   <div id="news"></div>
 
-  <script>
-    const newsData = {
-      good: [
-        "Local community raises thousands for shelter animals.",
-        "Scientists discover breakthrough in clean energy.",
-        "Graduation rates hit all-time high nationwide."
-      ],
-      bad: [
-        "Global warming reports show alarming trends.",
-        "Economic inflation spikes in several countries.",
-        "Cyberattack disrupts hospital systems across states."
-      ]
-    };
+    <!-- Thread form and display for user-generated bad news -->
+  <div id="bad-news-form" style="display:none;">
+    <h2>Share Your Experience</h2>
+    <form id="badNewsSubmitForm">
+      <textarea id="badNewsText" rows="4" placeholder="Tell us your story..." required></textarea><br/>
+      <input type="file" id="badNewsImage" accept="image/*"><br/>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="userBadNewsThread"></div>
+  </div>
 
-    let currentRotation = 0;
-    let hasSwitchedImage = false;
-
-    function showNews(type) {
-      const newsDiv = document.getElementById('news');
-      const body = document.getElementById('main-body');
-      const yinYang = document.getElementById('yinYang');
-
-      newsDiv.style.display = 'block';
-      newsDiv.innerHTML = '';
-
-      // ✅ Swap image BEFORE rotating to avoid flicker
-      if (!hasSwitchedImage) {
-        yinYang.src = "images/yinspun.png";
-        hasSwitchedImage = true;
-      }
-
-      // ✅ Rotate: 2 full spins + desired top color
-      const offset = (type === 'good') ? 0 : 180;
-      currentRotation += 720 + offset;
-      yinYang.style.transform = `rotate(${currentRotation}deg)`;
-
-      // ✅ Apply Yang theme for good
-      if (type === 'good') {
-        body.classList.add('yang-theme');
-      } else {
-        body.classList.remove('yang-theme');
-      }
-
-      // ✅ Display news
-      newsData[type].forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'news-item';
-        div.textContent = item;
-        newsDiv.appendChild(div);
-      });
-    }
-  </script>
+  <script src="badNews.js"></script>
 
 </body>
 </html>
