@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YinSight</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="image" href="images/yinspun.png" />
+  <link rel="preload" as="font" href="fonts/Lora/Lora-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" as="font" href="fonts/IMFell/IMFellEnglishSC-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
+  <script defer src="badNews.js"></script>
+  <script defer src="goodNews.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body id="main-body">
+
+  <header class="nav-bar">
+    <a class="link" onclick="showNews('good')">Good</a>
+
+    <div class="symbol-wrapper">
+      <img
+        id="yinYang"
+        class="symbol"
+        src="images/yinyang.png"
+        alt="Yin-Yang Symbol"
+        style="transform: rotate(0deg);" />
+    </div>
+    <a class="link" onclick="showNews('bad')">Bad</a>
+  </header>
+  <div id="news"></div>
+  <!-- 🖤 Bad News Form + Thread Display -->
+  <div id="bad-news-form" style="display:none;">
+    <h2>Share Your Experience</h2>
+    <form id="submitBadNews">
+      <textarea id="badNewsText" placeholder="Type your story..." required></textarea><br/>
+      <input type="file" id="badNewsImage" accept="image/*" /><br/><br/>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="bad-news-thread"></div>
+  </div>
+</body>
+</html>
