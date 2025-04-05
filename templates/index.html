@@ -5,17 +5,23 @@
   <title>YinSight</title>
   <link rel="stylesheet" href="/static/style.css" />
   <link rel="preload" as="image" href="/static/images/yinspun.png" />
+  <link rel="preload" as="font" href="/static/fonts/Lora/Lora-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" as="font" href="/static/fonts/IMFell/IMFellEnglishSC-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
 </head>
 <body id="main-body">
 
   <header class="nav-bar">
     <a class="link" onclick="showNews('good')">Good</a>
-    <img
-      id="yinYang"
-      class="symbol"
-      src="/static/images/yinyang.png"
-      alt="Yin-Yang Symbol"
-      style="transform: rotate(0deg);" />
+
+    <div class="symbol-wrapper">
+      <img
+        id="yinYang"
+        class="symbol"
+        src="/static/images/yinyang.png"
+        alt="Yin-Yang Symbol"
+        style="transform: rotate(0deg);" />
+    </div>
+
     <a class="link" onclick="showNews('bad')">Bad</a>
   </header>
 
@@ -36,6 +42,7 @@
     };
 
     let currentRotation = 0;
+    let isWhiteOnTop = true;
     let hasSwitchedImage = false;
 
     function showNews(type) {
@@ -46,25 +53,24 @@
       newsDiv.style.display = 'block';
       newsDiv.innerHTML = '';
 
-      // ✅ Swap image BEFORE rotating to avoid flicker
       if (!hasSwitchedImage) {
         yinYang.src = "/static/images/yinspun.png";
         hasSwitchedImage = true;
       }
 
-      // ✅ Rotate: 2 full spins + desired top color
-      const offset = (type === 'good') ? 0 : 180;
-      currentRotation += 720 + offset;
+      const targetRotation = (type === 'good') ? 0 : 180;
+      currentRotation += 720 + targetRotation;
       yinYang.style.transform = `rotate(${currentRotation}deg)`;
+      isWhiteOnTop = (type === 'good');
 
-      // ✅ Apply Yang theme for good
       if (type === 'good') {
         body.classList.add('yang-theme');
+        body.classList.remove('yin-theme');
       } else {
+        body.classList.add('yin-theme');
         body.classList.remove('yang-theme');
       }
 
-      // ✅ Display news
       newsData[type].forEach(item => {
         const div = document.createElement('div');
         div.className = 'news-item';
