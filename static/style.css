@@ -1,110 +1,68 @@
-@font-face {
-    font-family: 'Akira Expanded';
-    src: url('fonts/AkiraExpandedDemo.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face{
-    font-family: 'Lemon Milk';
-    src: url('fonts/LEMONMILK-Medium.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-body {
-    font-family: 'Akira Expanded', sans-serif;
-    margin: 0;
-    padding: 0;
+body, input {
+    font-family: sans-serif;
+    color: #000;
     text-align: center;
-    background-color: #2b2d42;
+    margin: 1em;
+    padding: 0;
+    font-size: 15px;
 }
 
-header {
-    font-family: 'Akira Expanded', sans-serif;
-    background: #333;
-    color: #edf2f4;
-    padding: 10px 20px;
-    position: relative;
-    height: 40px; 
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+input {
+    background-color: #fff;
+    margin: 0;
+    text-align: left;
+    outline: none !important;
+}
+
+input[type="submit"] {
+    padding: 3px 6px;
+}
+
+a {
+    color: #11557C;
+}
+
+a:hover {
+    color: #177199;
+}
+
+pre, code, textarea {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+div.debugger {
+    text-align: left;
+    padding: 12px;
+    margin: auto;
+    background-color: white;
 }
 
 h1 {
-    font-family: 'Akira Expanded', sans-serif;
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    margin: 0;
-    font-size: 30px;
-    text-align: left;
+    font-size: 36px;
+    margin: 0 0 0.3em 0;
 }
 
-.portfolio-line1 {
-    display: block;
-    font-weight: bold;
+div.detail {
+    cursor: pointer;
 }
 
-.portfolio-line2 {
-    font-family: 'Akira Expanded', sans-serif;
-    display: block;
-    font-size: 18px;
-    color: #edf2f4;
-    margin-top: 5px;
+div.detail p {
+    margin: 0 0 8px 13px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    font-family: monospace;
 }
 
-nav {
-    font-family: 'Akira Expanded', sans-serif;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+div.explanation {
+    margin: 20px;
 }
 
-nav a {
-    font-family: 'Akira Expanded', sans-serif;
-    display: inline-block;
-    color: #edf2f4;
-    margin: 0 10px;
-    padding: 5px 10px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    font-family: 'Akira Expanded', sans-serif;
-    color: aqua;
-    text-decoration: underline;
-    transition: color 0.3s ease-in-out;
-}
-
-section {
-    color: #edf2f4;
-    padding: 20px;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    text-align: left;
-    padding-left: 300px;
-    padding-top: 60px
-}
-
-section h2 {
-    font-family: 'Lemon Milk', sans-serif;
-    font-size: 20px; 
-    margin-bottom: -30px;
-}
-
-section p {
-    font-family: 'Lemon Milk', sans-serif;
-    font-size: 45px; 
-    margin-bottom: -50px;
-}
-
-.p2 {
-    font-family: 'Lemon Milk', sans-serif;
-    font-size: 45px; 
-}
+/* --------- Added YinSight Styling --------- */
 
 header.nav-bar {
     display: flex;
@@ -114,7 +72,7 @@ header.nav-bar {
     padding: 0 60px;
 }
 
-header.nav-bar .link{
+header.nav-bar .link {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
@@ -131,4 +89,32 @@ header.nav-bar .symbol {
     height: 60px;
     background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Yin_yang.svg/1024px-Yin_yang.svg.png') no-repeat center center;
     background-size: contain;
+}
+
+#news {
+    margin-top: 20px;
+    display: none;
+}
+
+.news-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px auto;
+    width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Yang Theme – Serene White Reflective Style (For Good News) */
+.yang-theme {
+    background-color: #ffffff;
+    color: #333333;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.yang-theme .news-item {
+    background-color: #f9f9f9;
+    color: #222;
+    border-left: 4px solid #ddd;
+    font-style: italic;
 }
