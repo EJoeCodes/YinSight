@@ -87,8 +87,7 @@ header.nav-bar .link:hover {
 header.nav-bar .symbol {
     width: 60px;
     height: 60px;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Yin_yang.svg/1024px-Yin_yang.svg.png') no-repeat center center;
-    background-size: contain;
+    object-fit: contain;
 }
 
 #news {

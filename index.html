@@ -9,7 +9,7 @@
 
   <header class="nav-bar">
     <a class="link" onclick="showNews('good')">Good</a>
-    <div class="symbol"></div>
+    <img id="yinYang" class="symbol" src="/static/images/yinyang.png" alt="Yin-Yang Symbol" />
     <a class="link" onclick="showNews('bad')">Bad</a>
   </header>
 
@@ -32,15 +32,21 @@
     function showNews(type) {
       const newsDiv = document.getElementById('news');
       const body = document.getElementById('main-body');
+      const yinYang = document.getElementById('yinYang');
+
       newsDiv.style.display = 'block';
       newsDiv.innerHTML = '';
 
-      // Apply Yang theme for GOOD news
+      // Theme toggle
       if (type === 'good') {
         body.classList.add('yang-theme');
       } else {
         body.classList.remove('yang-theme');
       }
+
+      // Animate symbol
+      yinYang.classList.add('animate');
+      setTimeout(() => yinYang.classList.remove('animate'), 1000);
 
       newsData[type].forEach(item => {
         const div = document.createElement('div');
