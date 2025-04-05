@@ -5,115 +5,75 @@ body, input {
     margin: 1em;
     padding: 0;
     font-size: 15px;
-}
-
-h1, h2, h3 {
+  }
+  
+  h1, h2, h3 {
     font-weight: normal;
-}
-
-input {
-    background-color: #fff;
-    margin: 0;
-    text-align: left;
-    outline: none !important;
-}
-
-input[type="submit"] {
-    padding: 3px 6px;
-}
-
-a {
+  }
+  
+  a {
     color: #11557C;
-}
-
-a:hover {
+    text-decoration: none;
+  }
+  
+  a:hover {
     color: #177199;
-}
-
-pre, code, textarea {
-    font-family: monospace;
-    font-size: 14px;
-}
-
-div.debugger {
-    text-align: left;
-    padding: 12px;
-    margin: auto;
-    background-color: white;
-}
-
-h1 {
-    font-size: 36px;
-    margin: 0 0 0.3em 0;
-}
-
-div.detail {
-    cursor: pointer;
-}
-
-div.detail p {
-    margin: 0 0 8px 13px;
-    font-size: 14px;
-    white-space: pre-wrap;
-    font-family: monospace;
-}
-
-div.explanation {
-    margin: 20px;
-}
-
-/* --------- Added YinSight Styling --------- */
-
-header.nav-bar {
+  }
+  
+  /* Header layout */
+  header.nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
     padding: 0 60px;
-}
-
-header.nav-bar .link {
+  }
+  
+  /* Good / Bad links */
+  header.nav-bar .link {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     color: #333;
-    text-decoration: none;
-}
-
-header.nav-bar .link:hover {
+  }
+  
+  header.nav-bar .link:hover {
     color: #0077cc;
-}
-
-header.nav-bar .symbol {
-    width: 60px;
-    height: 60px;
+  }
+  
+  /* Yin-Yang image */
+  .symbol {
+    width: 80px;
+    height: 80px;
     object-fit: contain;
-}
-
-#news {
+    transition: transform 1s ease-in-out, opacity 0.3s ease;
+  }
+  
+  /* News section */
+  #news {
     margin-top: 20px;
     display: none;
-}
-
-.news-item {
+  }
+  
+  .news-item {
     background-color: white;
     border-radius: 10px;
     padding: 15px;
     margin: 10px auto;
     width: 80%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Yang Theme – Serene White Reflective Style (For Good News) */
-.yang-theme {
+    font-style: italic;
+  }
+  
+  /* Yang theme */
+  .yang-theme {
     background-color: #ffffff;
-    color: #333333;
+    color: #333;
     transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.yang-theme .news-item {
+  }
+  
+  .yang-theme .news-item {
     background-color: #f9f9f9;
     color: #222;
     border-left: 4px solid #ddd;
-    font-style: italic;
-}
+  }
