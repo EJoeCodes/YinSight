@@ -5,7 +5,7 @@
   <title>YinSight</title>
   <link rel="stylesheet" href="/static/style.css" />
 </head>
-<body>
+<body id="main-body">
 
   <header class="nav-bar">
     <a class="link" onclick="showNews('good')">Good</a>
@@ -31,8 +31,16 @@
 
     function showNews(type) {
       const newsDiv = document.getElementById('news');
+      const body = document.getElementById('main-body');
       newsDiv.style.display = 'block';
       newsDiv.innerHTML = '';
+
+      // Apply Yang theme for GOOD news
+      if (type === 'good') {
+        body.classList.add('yang-theme');
+      } else {
+        body.classList.remove('yang-theme');
+      }
 
       newsData[type].forEach(item => {
         const div = document.createElement('div');
