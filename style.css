@@ -219,3 +219,11 @@ header.nav-bar .link {
   font-size: 12px;
   color: #aaa;
 }
+
+.symbol {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 1s ease-in-out, opacity 0.3s ease;
+  cursor: pointer; /* 👈 this makes it show the pointer hand on hover */
+}
