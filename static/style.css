@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Akira Expanded';
+    src: url('fonts/AkiraExpandedDemo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Akira Expanded', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #2b2d42;
+}
+
+header {
+    font-family: 'Akira Expanded', sans-serif;
+    background: #333;
+    color: #edf2f4;
+    padding: 10px 20px;
+    position: relative;
+    height: 40px; 
+}
+
+h1 {
+    font-family: 'Akira Expanded', sans-serif;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    margin: 0;
+    font-size: 30px;
+    text-align: left;
+}
+
+.portfolio-line1 {
+    display: block;
+    font-weight: bold;
+}
+
+.portfolio-line2 {
+    font-family: 'Akira Expanded', sans-serif;
+    display: block;
+    font-size: 18px;
+    color: #edf2f4;
+    margin-top: 5px;
+}
+
+nav {
+    font-family: 'Akira Expanded', sans-serif;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+nav a {
+    font-family: 'Akira Expanded', sans-serif;
+    display: inline-block;
+    color: #edf2f4;
+    margin: 0 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    font-family: 'Akira Expanded', sans-serif;
+    color: aqua;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+}
+
+section {
+    color: #edf2f4;
+    padding: 20px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    padding-left: 300px;
+    padding-top: 60px
+}
+
+section h2 {
+    font-family: 'Lemon Milk', sans-serif;
+    font-size: 20px; 
+    margin-bottom: -30px;
+}
+
+section p {
+    font-family: 'Lemon Milk', sans-serif;
+    font-size: 45px; 
+    margin-bottom: -50px;
+}
+
+.p2 {
+    font-family: 'Lemon Milk', sans-serif;
+    font-size: 45px; 
+}
