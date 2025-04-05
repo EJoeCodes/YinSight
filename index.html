@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>YinSight</title>
-  <link rel="stylesheet" href="/static/style.css" />
-  <link rel="preload" as="image" href="/static/images/yinspun.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="image" href="images/yinspun.png" />
 </head>
 <body id="main-body">
 
@@ -13,7 +13,7 @@
     <img
       id="yinYang"
       class="symbol"
-      src="/static/images/yinyang.png"
+      src="images/yinyang.png"
       alt="Yin-Yang Symbol"
       style="transform: rotate(0deg);" />
     <a class="link" onclick="showNews('bad')">Bad</a>
@@ -48,7 +48,7 @@
 
       // ✅ Swap image BEFORE rotating to avoid flicker
       if (!hasSwitchedImage) {
-        yinYang.src = "/static/images/yinspun.png";
+        yinYang.src = "images/yinspun.png";
         hasSwitchedImage = true;
       }
 
