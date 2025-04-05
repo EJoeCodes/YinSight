@@ -5,34 +5,97 @@
   <title>YinSight</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preload" as="image" href="images/yinspun.png" />
+  <link rel="preload" as="font" href="fonts/Lora/Lora-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" as="font" href="fonts/IMFell/IMFellEnglishSC-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
+  <script defer src="badNews.js"></script> <!-- Link to your new JS file -->
 </head>
 <body id="main-body">
 
   <header class="nav-bar">
     <a class="link" onclick="showNews('good')">Good</a>
-    <img
-      id="yinYang"
-      class="symbol"
-      src="images/yinyang.png"
-      alt="Yin-Yang Symbol"
-      style="transform: rotate(0deg);" />
+
+    <div class="symbol-wrapper">
+      <img
+        id="yinYang"
+        class="symbol"
+        src="images/yinyang.png"
+        alt="Yin-Yang Symbol"
+        style="transform: rotate(0deg);" />
+    </div>
+
     <a class="link" onclick="showNews('bad')">Bad</a>
   </header>
 
   <div id="news"></div>
 
-    <!-- Thread form and display for user-generated bad news -->
+  <!-- 🖤 Bad News Form + Thread Display -->
   <div id="bad-news-form" style="display:none;">
     <h2>Share Your Experience</h2>
-    <form id="badNewsSubmitForm">
-      <textarea id="badNewsText" rows="4" placeholder="Tell us your story..." required></textarea><br/>
-      <input type="file" id="badNewsImage" accept="image/*"><br/>
+    <form id="submitBadNews">
+      <textarea id="badNewsText" placeholder="Type your story..." required></textarea><br/>
+      <input type="file" id="badNewsImage" accept="image/*" /><br/><br/>
       <button type="submit">Submit</button>
     </form>
-    <div id="userBadNewsThread"></div>
+    <div id="bad-news-thread"></div>
   </div>
 
-  <script src="badNews.js"></script>
+  <!-- Original script stays here, updated -->
+  <script>
+    const newsData = {
+      good: [
+        "Local community raises thousands for shelter animals.",
+        "Scientists discover breakthrough in clean energy.",
+        "Graduation rates hit all-time high nationwide."
+      ],
+      bad: [
+        "Global warming reports show alarming trends.",
+        "Economic inflation spikes in several countries.",
+        "Cyberattack disrupts hospital systems across states."
+      ]
+    };
+
+    let currentRotation = 0;
+    let isWhiteOnTop = true;
+    let hasSwitchedImage = false;
+
+    function showNews(type) {
+      const newsDiv = document.getElementById('news');
+      const body = document.getElementById('main-body');
+      const yinYang = document.getElementById('yinYang');
+      const badForm = document.getElementById('bad-news-form');
+
+      newsDiv.style.display = 'block';
+      newsDiv.innerHTML = '';
+      badForm.style.display = (type === 'bad') ? 'block' : 'none';
+
+      if (!hasSwitchedImage) {
+        yinYang.src = "images/yinspun.png";
+        hasSwitchedImage = true;
+      }
+
+      const targetRotation = (type === 'good') ? 0 : 180;
+      currentRotation += 720 + targetRotation;
+      yinYang.style.transform = `rotate(${currentRotation}deg)`;
+      isWhiteOnTop = (type === 'good');
+
+      if (type === 'good') {
+        body.classList.add('yang-theme');
+        body.classList.remove('yin-theme');
+      } else {
+        body.classList.add('yin-theme');
+        body.classList.remove('yang-theme');
+      }
+
+      if (type === 'good') {
+        newsData[type].forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'news-item';
+          div.textContent = item;
+          newsDiv.appendChild(div);
+        });
+      }
+    }
+  </script>
 
 </body>
 </html>
