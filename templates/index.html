@@ -3,81 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <title>YinSight</title>
-  <link rel="stylesheet" href="/static/style.css" />
-  <link rel="preload" as="image" href="/static/images/yinspun.png" />
-  <link rel="preload" as="font" href="/static/fonts/Lora/Lora-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin="anonymous" />
-  <link rel="preload" as="font" href="/static/fonts/IMFell/IMFellEnglishSC-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='goodNews.js') }}"></script>
 </head>
 <body id="main-body">
 
   <header class="nav-bar">
     <a class="link" onclick="showNews('good')">Good</a>
-
     <div class="symbol-wrapper">
-      <img
-        id="yinYang"
-        class="symbol"
-        src="/static/images/yinyang.png"
-        alt="Yin-Yang Symbol"
-        style="transform: rotate(0deg);" />
+      <img id="yinYang" class="symbol" src="{{ url_for('static', filename='images/yinspun.png') }}" alt="Yin-Yang Symbol" style="transform: rotate(0deg);" />
     </div>
-
     <a class="link" onclick="showNews('bad')">Bad</a>
   </header>
 
   <div id="news"></div>
 
-  <script>
-    const newsData = {
-      good: [
-        "Local community raises thousands for shelter animals.",
-        "Scientists discover breakthrough in clean energy.",
-        "Graduation rates hit all-time high nationwide."
-      ],
-      bad: [
-        "Global warming reports show alarming trends.",
-        "Economic inflation spikes in several countries.",
-        "Cyberattack disrupts hospital systems across states."
-      ]
-    };
+  <!-- Bad news form -->
+  <div id="bad-news-form" style="display: none;">
+    <h2>Share Your Experience</h2>
+    <form id="badNewsSubmitForm">
+      <textarea id="badNewsText" rows="4" placeholder="Tell us your story..." required></textarea><br/>
+      <input type="file" id="badNewsImage" accept="image/*"><br/>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="userBadNewsThread"></div>
+  </div>
 
-    let currentRotation = 0;
-    let isWhiteOnTop = true;
-    let hasSwitchedImage = false;
+  <script>
+    let totalRotations = 0;
+    let spinInterval;
+
+    function startSmoothSpin() {
+      const img = document.getElementById('yinYang');
+      let angle = 0;
+      spinInterval = setInterval(() => {
+        angle -= 5;
+        img.style.transform = `rotate(${angle}deg)`;
+      }, 16);
+    }
+
+    function stopSmoothSpin(finalAngle) {
+      clearInterval(spinInterval);
+      const img = document.getElementById('yinYang');
+      img.style.transform = `rotate(${finalAngle}deg)`;
+    }
 
     function showNews(type) {
-      const newsDiv = document.getElementById('news');
-      const body = document.getElementById('main-body');
-      const yinYang = document.getElementById('yinYang');
+      const newsDiv = document.getElementById("news");
+      const body = document.getElementById("main-body");
+      const yinYang = document.getElementById("yinYang");
 
-      newsDiv.style.display = 'block';
       newsDiv.innerHTML = '';
+      document.getElementById('bad-news-form').style.display = (type === 'bad') ? 'block' : 'none';
 
-      if (!hasSwitchedImage) {
-        yinYang.src = "/static/images/yinspun.png";
-        hasSwitchedImage = true;
-      }
-
-      const targetRotation = (type === 'good') ? 0 : 180;
-      currentRotation += 720 + targetRotation;
-      yinYang.style.transform = `rotate(${currentRotation}deg)`;
-      isWhiteOnTop = (type === 'good');
+      const baseRotation = (type === 'good') ? 0 : 180;
+      let spins = (type === 'good') ? 3 : 1;
+      totalRotations += spins;
+      const finalRotation = totalRotations * 360 + baseRotation;
 
       if (type === 'good') {
         body.classList.add('yang-theme');
         body.classList.remove('yin-theme');
+        startSmoothSpin();
+        fetchGoodNews().finally(() => {
+          setTimeout(() => stopSmoothSpin(finalRotation), 300);
+        });
       } else {
         body.classList.add('yin-theme');
         body.classList.remove('yang-theme');
+        yinYang.style.transform = `rotate(${finalRotation}deg)`;
       }
-
-      newsData[type].forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'news-item';
-        div.textContent = item;
-        newsDiv.appendChild(div);
-      });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('badNewsSubmitForm');
+      const thread = document.getElementById('userBadNewsThread');
+
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const text = document.getElementById('badNewsText').value;
+        const imageFile = document.getElementById('badNewsImage').files[0];
+        const entry = document.createElement('div');
+        entry.classList.add('user-bad-news-entry');
+
+        const textElem = document.createElement('p');
+        textElem.textContent = text;
+        entry.appendChild(textElem);
+
+        if (imageFile) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const img = document.createElement('img');
+            img.src = reader.result;
+            img.classList.add('bad-news-img');
+            entry.appendChild(img);
+            thread.appendChild(entry);
+          };
+          reader.readAsDataURL(imageFile);
+        } else {
+          thread.appendChild(entry);
+        }
+
+        form.reset();
+      });
+    });
   </script>
 
 </body>
