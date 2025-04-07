@@ -18,6 +18,7 @@ async function fetchGoodNews() {
       }
 
       const title = document.createElement("h3");
+      title.className = "news-title";
       const link = document.createElement("a");
       link.href = article.link;
       link.textContent = article.title;
@@ -26,11 +27,12 @@ async function fetchGoodNews() {
       container.appendChild(title);
 
       const desc = document.createElement("p");
+      desc.className = "news-description";
       desc.textContent = article.description;
       container.appendChild(desc);
 
       const source = document.createElement("p");
-      source.className = "source";
+      source.className = "news-source";
       source.textContent = `Source: ${article.source} (${article.site_position})`;
       container.appendChild(source);
 

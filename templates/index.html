@@ -9,12 +9,22 @@
 <body id="main-body">
 
   <header class="nav-bar">
-    <a class="link" onclick="showNews('good')">Good</a>
+    <a class="link" onclick="showNews('good')">The Good News</a>
     <div class="symbol-wrapper">
       <img id="yinYang" class="symbol" src="{{ url_for('static', filename='images/yinspun.png') }}" alt="Yin-Yang Symbol" style="transform: rotate(0deg);" />
     </div>
-    <a class="link" onclick="showNews('bad')">Bad</a>
+    <a class="link" onclick="showNews('bad')">(Your) Bad News</a>
   </header>
+
+  <!-- Welcome Message -->
+  <div id="welcome-message" class="welcome">
+    <h1>Welcome to YinSight</h1>
+    <p>
+      Discover the balance of today's world: uplifting headlines that inspire you on one side,
+      and real, user-shared struggles on the other. Click "The Good News" to feel encouraged,
+      or "(Your) Bad News" to share your trials and tribulations.
+    </p>
+  </div>
 
   <div id="news"></div>
 
@@ -52,6 +62,15 @@
       const newsDiv = document.getElementById("news");
       const body = document.getElementById("main-body");
       const yinYang = document.getElementById("yinYang");
+      const welcome = document.getElementById("welcome-message");
+
+      if (welcome) {
+      welcome.classList.add("fade-out");
+      setTimeout(() => {
+      welcome.style.display = "none";
+      }, 500); // Matches the transition duration
+}
+
 
       newsDiv.innerHTML = '';
       document.getElementById('bad-news-form').style.display = (type === 'bad') ? 'block' : 'none';

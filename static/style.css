@@ -12,6 +12,11 @@
   font-weight: 400;
 }
 
+/* Default state of nav links before any theme is applied */
+.nav-bar .link {
+  font-family: 'LoraItalic', serif;
+}
+
 body, input {
   font-family: sans-serif;
   color: #000;
@@ -109,26 +114,15 @@ header.nav-bar .link {
 
 /* Super emphasized article title with gradient and glow */
 .news-title {
-  font-size: 4em;
-  font-weight: 1000;
-  margin-bottom: 25px;
-  padding: 12px 24px;
-  color: #ffffff;
-  background: linear-gradient(to right, #ffffff 10%, #dddddd 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  word-spacing: 2.5px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px;
   text-shadow:
-    0 0 8px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(255, 255, 255, 0.4),
-    0 0 20px rgba(255, 255, 255, 0.2);
-  border-bottom: 4px solid #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 10px;
-  border-radius: 8px;
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 /* Description & Source */
@@ -243,4 +237,62 @@ header.nav-bar .link {
 }
 
 .bad-news-img {
-  width:
+  width: 100%;
+  max-width: 400px;
+  margin-top: 15px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.welcome {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: 'LoraItalic', serif;
+  color: #444;
+}
+
+.welcome h1 {
+  font-size: 2.2em;
+  margin-bottom: 12px;
+}
+
+.welcome p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #666;
+}
+
+.welcome {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  text-align: center;
+  font-family: 'LoraItalic', serif;
+  background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  color: #222;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.welcome.fade-out {
+  opacity: 0;
+}
+
+.welcome h1 {
+  font-size: 2.6em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111;
+  text-shadow: 1px 1px 2px #ccc;
+}
+
+.welcome p {
+  font-size: 1.25em;
+  line-height: 1.8;
+  color: #333;
+}
