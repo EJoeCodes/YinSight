@@ -1,5 +1,12 @@
 async function fetchGoodNews() {
+  const loadingText = document.getElementById("loadingText");
+  const yinYang = document.getElementById("yinYang");
+
   try {
+    // Show loading text and spin symbol
+    if (loadingText) loadingText.style.display = "block";
+    if (yinYang) yinYang.classList.add("spinning");
+
     const response = await fetch("/goodnews");
     const articles = await response.json();
     const newsDiv = document.getElementById("news");
@@ -43,5 +50,9 @@ async function fetchGoodNews() {
     console.error("Failed to fetch good news:", error);
     const newsDiv = document.getElementById("news");
     newsDiv.innerHTML = "<p>Failed to load good news. Try again later.</p>";
+  } finally {
+    // Hide loading text and stop spin
+    if (loadingText) loadingText.style.display = "none";
+    if (yinYang) yinYang.classList.remove("spinning");
   }
 }

@@ -55,9 +55,11 @@ header.nav-bar .link {
   height: 80px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;     /* Center them horizontally *//* Center them horizontally */
 }
+
+
 
 .symbol {
   width: 100%;
@@ -114,16 +116,22 @@ header.nav-bar .link {
 
 /* Super emphasized article title with gradient and glow */
 .news-title {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 15px;
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
   text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
+    -2px -2px 3px #000,
+     2px -2px 3px #000,
+    -2px  2px 3px #000,
+     2px  2px 3px #000;
+  border-bottom: 3px solid #fff;
+  padding-bottom: 10px;
+  text-underline-offset: 6px;
 }
+
 
 /* Description & Source */
 .news-description {
@@ -295,4 +303,26 @@ header.nav-bar .link {
   font-size: 1.25em;
   line-height: 1.8;
   color: #333;
+}
+.loading-text {
+  display: none;
+  font-family: 'FellEnglish', serif;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #444;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.symbol.spinning {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
